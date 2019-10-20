@@ -1,15 +1,31 @@
 <template>
   <div class="container">
-    Ready to go!
+    <div>
+      <h1 class="title">My Nuxt Blog</h1>
+      <ul style="list-style: none">
+        <li v-for="post in posts" :key="post.id">
+          <nuxt-link :to="`/posts/${post.id}`">
+            {{ post.title }}
+          </nuxt-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
+import posts from '~~/posts'
 
 export default {
   components: {
     Logo
+  },
+
+  data() {
+    return {
+      posts
+    }
   }
 }
 </script>
